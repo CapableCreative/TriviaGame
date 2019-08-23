@@ -143,38 +143,36 @@ var ic3s = [
     questionBank.q8.ic3
 ]
 
+$('.nextBtn').click (function() {
+    if (incr <= 7) {       
+        questionRun(incr);
+        $('.answer').click (function() {
+            incr++
+            questionRun(incr);
+        });
+    }
+    else {
+        document.write('STOP');
+    }
+});
 
-    $('.nextBtn'||'.btn.btn-primary').click (function() {
-        if (incr <= 8) { 
-        
-        $('.question').text(questionArray[incr]);
-        $('.question').append('<button class=\"ca' + incr + ' btn btn-primary\">');
-        $('.question').append('<button class=\"ic1' + incr + ' btn btn-primary\">');
-        $('.question').append('<button class=\"ic2' + incr + ' btn btn-primary\">');
-        $('.question').append('<button class=\"ic3' + incr + ' btn btn-primary\">');
-        $('.ca'+ incr).text(correctAnswers[incr]);
-        $('.ic1'+ incr).text(ic1s[incr]);
-        $('.ic2'+ incr).text(ic2s[incr]);
-        $('.ic3'+ incr).text(ic3s[incr]);
-        incr++;
-        }
+function questionRun(x) {
+    $('.question').text(questionArray[x]);
+    $('.question').append('<button class=\"ca' + x + ' btn answer btn-primary\">');
+    $('.question').append('<button class=\"ic1' + x + ' btn answer btn-primary\">');
+    $('.question').append('<button class=\"ic2' + x + ' btn answer btn-primary\">');
+    $('.question').append('<button class=\"ic3' + x + ' btn answer btn-primary\">');
+    $('.ca'+ x).text(correctAnswers[x]);
+    $('.ic1'+ x).text(ic1s[x]);
+    $('.ic2'+ x).text(ic2s[x]);
+    $('.ic3'+ x).text(ic3s[x]);
+    x++;
+    $('.answer').click (function() {
+        questionRun(x);
     });
-
-    $('.btn-primary').click (function() {
-        if (incr <= 8) { 
-        
-        $('.question').text(questionArray[incr]);
-        $('.question').append('<button class=\"ca' + incr + ' btn btn-primary\">');
-        $('.question').append('<button class=\"ic1' + incr + ' btn btn-primary\">');
-        $('.question').append('<button class=\"ic2' + incr + ' btn btn-primary\">');
-        $('.question').append('<button class=\"ic3' + incr + ' btn btn-primary\">');
-        $('.ca'+ incr).text(correctAnswers[incr]);
-        $('.ic1'+ incr).text(ic1s[incr]);
-        $('.ic2'+ incr).text(ic2s[incr]);
-        $('.ic3'+ incr).text(ic3s[incr]);
-        
-        }
-    });
+    
+}
+    
 
 
 
