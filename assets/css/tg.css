@@ -10,3 +10,28 @@
         font-size: 50px;
         letter-spacing: 3px;    
     }
+
+
+.questionWrapper {
+    padding: 40px;
+}
+.question, .instructText, .instructions {
+  width: 100%;
+  padding: 20px;
+  text-align: center;  
+}
+
+.btn, button, .btn-primary {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #FFF;
+    text-align: center;
+    padding: 5px 30px;
+    width: 100%;
+    margin: 20px auto;
+    display: block;
+    }
+    .btn a {
+        color: #FFF;
+    }
