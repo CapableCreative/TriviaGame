@@ -1,7 +1,28 @@
+body {
+    background: url(../img/kinnikumancollection.jpg) no-repeat center 100px;
+    background-size: contain;
+    height: calc(100vh - 100px);
+    box-sizing: border-box;
+}
+iframe {
+    border-radius: 20px;
+    border: 3px solid #000;
+    box-shadow: -10px 10px 0px #000;
+    max-width: 90%;
+}
+.card {
+    border-radius: 30px;
+    background: rgba(254,242,90,.85);
+    box-shadow: -15px 20px rgba(0,0,0,0.8);
+    border: 3px solid #000;
+    box-sizing: border-box;
+}
+
 #tg-header {
-    background:#e21e2d;
+    background:#F85226;
     height: 100px;
     text-align: center;
+    box-sizing: border-box;
     }
     #tg-header h1 {
         font-family: 'Permanent Marker','Abigail Fatface', Arial, Helvetica, sans-serif;
@@ -10,15 +31,74 @@
         font-size: 50px;
         letter-spacing: 3px;    
     }
-
+.questionWrapper {
+    margin: 0px auto;
+}
 
 .questionWrapper {
-    padding: 40px;
+    padding: 40px 0px;
+    box-sizing: border-box;
+    width: calc(100% - 80px);
 }
 .question, .instructText, .instructions {
   width: 100%;
   padding: 20px;
-  text-align: center;  
+  text-align: center; 
+  box-sizing: border-box; 
+}
+.question, h1, .h1 {
+    font-size: 24px;
+    font-weight: 700;
+    box-sizing: border-box;
+}
+.winner, .loser {
+    transition: all 2s;
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: none;
+    box-sizing: border-box;
+}
+.battleStats {
+    position: absolute;
+    top: 200px;
+    left: 200px;
+    background: #FFF;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: -15px 10px 0px #000;
+    border: 3px solid #000;
+    transform: skewY(-10deg);
+    box-sizing: border-box;
+    }
+    .battleStats p{
+        font-size: 30px;
+        text-transform: uppercase;
+        font-weight: 700;
+        text-align: center;
+        transform: skewY(-5deg);
+        box-sizing: border-box;
+    }
+    .incorrectQuestion, h1, .h1 {
+        font-family: 'M PLUS Rounded 1c','Montserrat','Helvetica Neue', helvetica, arial, sans-serif;
+        color: #e21e2d;
+    }
+    .correctQuestion {
+        font-size: 36px;
+        font-family: 'M PLUS Rounded 1c','Montserrat','Helvetica Neue', helvetica, arial, sans-serif;
+    }
+
+.winner {
+    background: url(../img/muscleWinner.jpg) no-repeat center center;
+    background-size: cover;
+    box-sizing: border-box;
+}
+.loser {
+    background: url(../img/muscleLoser.jpg) no-repeat center center;
+    background-size: cover;
+    box-sizing: border-box;
 }
 
 .btn, button, .btn-primary {
@@ -31,7 +111,15 @@
     width: 100%;
     margin: 20px auto;
     display: block;
+    background: #F85226;
+    border-radius: 50px;
+    border: 3px solid #000;
+    box-shadow: -10px 15px #000;
+    font-family: 'M PLUS Rounded 1c','Montserrat','Helvetica Neue', helvetica, arial, sans-serif;
+    letter-spacing: 2px;
+    box-sizing: border-box;
     }
     .btn a {
         color: #FFF;
+        box-sizing: border-box;
     }

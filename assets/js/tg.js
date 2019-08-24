@@ -5,67 +5,67 @@
 
 var questionBank = {
     q0: {
-        question: "Question 1",
-        ca: 73,
-        ic1: 72,
-        ic2: 71,
-        ic3: 70,
+        question: "Q1: What country did 'M.U.S.C.L.E. come from originally?",
+        ca: "Japan",
+        ic1: "China",
+        ic2: "Mexico",
+        ic3: "United States of America",
         qid: 1,
     },
     q1: {
-        question: "Question 2",
-        ca: 73,
-        ic1: 72,
-        ic2: 71,
-        ic3: 70,
+        question: "Q2: What was the name of the the villainous leader?",
+        ca: "Buffalo Bill",
+        ic1: "Donnie Darko",
+        ic2: "Bloodsport",
+        ic3: "Wild Bison",
         qid: 2
     },
     q2: {
-        question: "Question 3",
-        ca: 73,
-        ic1: 72,
-        ic2: 71,
-        ic3: 70,
+        question: "Q3: What is the Japanese name for M.U.S.C.L.E.?",
+        ca: "Kinnokuman",
+        ic1: "Smack-Smack-BLAMMO!",
+        ic2: "One Punch Man",
+        ic3: "Arny Armstrong",
         qid: 3
     },
     q3: {
-        question: "Question 4",
-        ca: 73,
-        ic1: 72,
-        ic2: 71,
-        ic3: 70,
+        question: "Q4: What is Buffalo Bill's gang called?",
+        ca: "The Cosmic Crushers",
+        ic1: "Legion of Doom",
+        ic2: "Cloaks of Midnight",
+        ic3: "Slendermen",
         qid: 3
     },
     q4: {
-        question: "Question 5",
-        ca: 73,
-        ic1: 72,
-        ic2: 71,
-        ic3: 70,
+        question: "Q5: Which licensed products DID NOT spin out of the M.U.S.C.L.E. line of toys?",
+        ca: "Live Action Movie",
+        ic1: "Cartoon",
+        ic2: "Nintendo Entertainment System Game",
+        ic3: "A generation of nerds",
         qid: 1
     },
     q5: {
-        question: "Question 6",
-        ca: 73,
-        ic1: 72,
-        ic2: 71,
-        ic3: 70,
+        question: "Q6: Which American toy company produced the M.U.S.C.L.E. toys?",
+        ca: "Mattel",
+        ic1: "Hasbro",
+        ic2: "Kenner",
+        ic3: "Blackwater",
         qid: 2
     },
     q6: {
-        question: "Question 7",
-        ca: 73,
-        ic1: 72,
-        ic2: 71,
-        ic3: 70,
+        question: "Q7: What does M.U.S.C.L.E. stand for?",
+        ca: "Millions of Unusual Small Creatures Lurking Everywhere",
+        ic1: "Miles Usually Slaps Carl Lightly into Euphoria",
+        ic2: "Millions of Ultimately Stupid Cows Licking Everyone",
+        ic3: "My Ugly Sister Collects Little Elephants",
         qid: 3
     },
     q7: {
-        question: "Question 8",
-        ca: 73,
-        ic1: 72,
-        ic2: 71,
-        ic3: 70,
+        question: "Q8: What color did M.U.S.C.L.E. figures NOT come in?",
+        ca: "Brown",
+        ic1: "Green",
+        ic2: "Purple",
+        ic3: "Flesh/Pink",
         qid: 3
     },
     q8: {
@@ -143,34 +143,52 @@ var ic3s = [
     questionBank.q8.ic3
 ]
 
-$('.nextBtn').click (function() {
-    if (incr <= 7) {       
+$('.nextBtn').click (function() {         
+    questionRun(incr);   
+    $('.answer').click (function() {
+        incr++
         questionRun(incr);
-        $('.answer').click (function() {
-            incr++
-            questionRun(incr);
-        });
-    }
-    else {
-        document.write('STOP');
-    }
+    });
+    setInterval(function(){ questionRun(incr++); }, 3000);
 });
 
 function questionRun(x) {
     $('.question').text(questionArray[x]);
-    $('.question').append('<button class=\"ca' + x + ' btn answer btn-primary\">');
-    $('.question').append('<button class=\"ic1' + x + ' btn answer btn-primary\">');
-    $('.question').append('<button class=\"ic2' + x + ' btn answer btn-primary\">');
-    $('.question').append('<button class=\"ic3' + x + ' btn answer btn-primary\">');
+    $('.question').append('<button class=\"ca' + x + ' btn ca answer btn-primary\">');
+    $('.question').append('<button class=\"ic1' + x + ' btn ic1 answer btn-primary\">');
+    $('.question').append('<button class=\"ic2' + x + ' btn ic2 answer btn-primary\">');
+    $('.question').append('<button class=\"ic3' + x + ' btn ic3 answer btn-primary\">');
+    $('.instructText').css('display','none');
+    $('.nextBtn').css('display','none');
     $('.ca'+ x).text(correctAnswers[x]);
     $('.ic1'+ x).text(ic1s[x]);
     $('.ic2'+ x).text(ic2s[x]);
     $('.ic3'+ x).text(ic3s[x]);
+    $('.ca').click (function() {
+        correct++;
+    });
+    $('.ic1,.ic2,.ic3').click (function() {
+        incorrect++;
+    });
     x++;
     $('.answer').click (function() {
-        questionRun(x);
-    });
-    
+        if (x <= 8) {
+            questionRun(x);  
+            if((x > 7) && (incorrect >= 4)) {
+                $('.loser').css('display','block');
+                $('.correctQuestion').text('Total Correct Answers: ' + correct);
+                $('.incorrectQuestion').text('Total Incorrect Answers: ' + incorrect);
+            }
+            else if((x > 7) && (incorrect < 4)) {
+                $('.winner').css('display','block');
+                $('.correctQuestion').text('Total Correct Answers: ' + correct);
+                $('.incorrectQuestion').text('Total Incorrect Answers: ' + incorrect);
+            } 
+
+        }
+        let currentIncr = x;
+        setInterval(function(){ questionRun(currentIncr++); }, 3000);
+    });  
 }
     
 
