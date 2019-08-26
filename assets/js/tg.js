@@ -145,7 +145,7 @@ var ic3s = [
 
 $('.nextBtn').click (function() {
     $('.ca').css('background-color','green');  
-    questionRun(incr); 
+    questionRun(incr++); 
    // $('.answer').click (function() {
    //     incr++
    //     questionRun(incr);
@@ -154,33 +154,49 @@ $('.nextBtn').click (function() {
 });
 
 function questionRun(x) {
-    $('.question').text(questionArray[x]);
-    $('.question').append('<button class=\"ca' + x + ' btn ca answer btn-primary\">');
-    $('.question').append('<button class=\"ic1' + x + ' btn ic1 answer btn-primary\">');
-    $('.question').append('<button class=\"ic2' + x + ' btn ic2 answer btn-primary\">');
-    $('.question').append('<button class=\"ic3' + x + ' btn ic3 answer btn-primary\">');
-    $('.instructText').css('display','none');
-    $('.nextBtn').css('display','none');
-    $('.ca'+ x).text(correctAnswers[x]);
-    $('.ic1'+ x).text(ic1s[x]);
-    $('.ic2'+ x).text(ic2s[x]);
-    $('.ic3'+ x).text(ic3s[x]);
-    $('.ca').click (function() {
-        correct++;
-    $('.btn.ca').css('background','green');    
-    $('.btn.ca').addClass('correctX');      
-    $('.btn.ic1,.btn.ic2,.btn.ic3').css('background','#000');
-    $('.btn.ic1,.btn.ic2,.btn.ic3').addClass('wrongX');      
-
-    });
-    $('.ic1,.ic2,.ic3').click (function() {
-        incorrect++;
-        $('.btn.ca').css('background','green');
-        $('.btn.ca').addClass('correctY'); 
+    if (x <= 8) {
+        $('.question').text(questionArray[x]);
+        $('.question').append('<button class=\"ca' + x + ' btn ca answer btn-primary\">');
+        $('.question').append('<button class=\"ic1' + x + ' btn ic1 answer btn-primary\">');
+        $('.question').append('<button class=\"ic2' + x + ' btn ic2 answer btn-primary\">');
+        $('.question').append('<button class=\"ic3' + x + ' btn ic3 answer btn-primary\">');
+        $('.instructText').css('display','none');
+        $('.nextBtn').css('display','none');
+        $('.ca'+ x).text(correctAnswers[x]);
+        $('.ic1'+ x).text(ic1s[x]);
+        $('.ic2'+ x).text(ic2s[x]);
+        $('.ic3'+ x).text(ic3s[x]);
+        $('.ca').click (function() {
+            correct++;
+        $('.btn.ca').css('background','green');    
+        $('.btn.ca').addClass('correctX');      
         $('.btn.ic1,.btn.ic2,.btn.ic3').css('background','#000');
-        $('.btn.ic1,.btn.ic2,.btn.ic3').addClass('wrongX');
-    });
-    x++;
+        $('.btn.ic1,.btn.ic2,.btn.ic3').addClass('wrongX');      
+
+        });
+        $('.ic1,.ic2,.ic3').click (function() {
+            incorrect++;
+            $('.btn.ca').css('background','green');
+            $('.btn.ca').addClass('correctY'); 
+            $('.btn.ic1,.btn.ic2,.btn.ic3').css('background','#000');
+            $('.btn.ic1,.btn.ic2,.btn.ic3').addClass('wrongX');
+        });
+        x++;
+    }
+    if (x > 8) {
+        if(incorrect >= 4) {
+            $('.loser').css('display','block');
+            $('.correctQuestion').text('Total Correct Answers: ' + correct);
+            $('.incorrectQuestion').text('Total Incorrect Answers: ' + incorrect);
+            
+        }
+        else {
+            $('.winner').css('display','block');
+            $('.correctQuestion').text('Total Correct Answers: ' + correct);
+            $('.incorrectQuestion').text('Total Incorrect Answers: ' + incorrect);
+        } 
+
+    }
    
  /*   $('.answer').click (function() {
         if (x <= 8) {
