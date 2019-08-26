@@ -1,7 +1,4 @@
-
-
 // 1. Create objects for each question
-
 
 var questionBank = {
     q0: {
@@ -78,8 +75,6 @@ var questionBank = {
     }
 }
 
-const keys = Object.keys(questionBank);
-
 // 2. Create first timed div.
 
 let incr = 0;
@@ -146,11 +141,6 @@ var ic3s = [
 $('.nextBtn').click (function() {
     $('.ca').css('background-color','green');  
     questionRun(incr++); 
-
-   // $('.answer').click (function() {
-   //     incr++
-   //     questionRun(incr);
-   // });
     setInterval(function(){ questionRun(incr++); }, 5000);
 });
 
@@ -207,24 +197,7 @@ function questionRun(x) {
             quest.appendChild(quest.children[Math.random() * i | 0]);
         }
     }
-   
- /*   $('.answer').click (function() {
-        if (x <= 8) {
-            questionRun(x);  
-            if((x > 7) && (incorrect >= 4)) {
-                $('.loser').css('display','block');
-                $('.correctQuestion').text('Total Correct Answers: ' + correct);
-                $('.incorrectQuestion').text('Total Incorrect Answers: ' + incorrect);
-                
-            }
-            else if((x > 7) && (incorrect < 4)) {
-                $('.winner').css('display','block');
-                $('.correctQuestion').text('Total Correct Answers: ' + correct);
-                $('.incorrectQuestion').text('Total Incorrect Answers: ' + incorrect);
-            } 
 
-        }
-    }); */ 
 }
     
 
