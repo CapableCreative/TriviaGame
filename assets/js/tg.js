@@ -143,13 +143,14 @@ var ic3s = [
     questionBank.q8.ic3
 ]
 
-$('.nextBtn').click (function() {         
-    questionRun(incr);   
-    $('.answer').click (function() {
-        incr++
-        questionRun(incr);
-    });
-    setInterval(function(){ questionRun(incr++); }, 3000);
+$('.nextBtn').click (function() {
+    $('.ca').css('background-color','green');  
+    questionRun(incr); 
+   // $('.answer').click (function() {
+   //     incr++
+   //     questionRun(incr);
+   // });
+    setInterval(function(){ questionRun(incr++); }, 5000);
 });
 
 function questionRun(x) {
@@ -166,18 +167,29 @@ function questionRun(x) {
     $('.ic3'+ x).text(ic3s[x]);
     $('.ca').click (function() {
         correct++;
+    $('.btn.ca').css('background','green');    
+    $('.btn.ca').addClass('correctX');      
+    $('.btn.ic1,.btn.ic2,.btn.ic3').css('background','#000');
+    $('.btn.ic1,.btn.ic2,.btn.ic3').addClass('wrongX');      
+
     });
     $('.ic1,.ic2,.ic3').click (function() {
         incorrect++;
+        $('.btn.ca').css('background','green');
+        $('.btn.ca').addClass('correctY'); 
+        $('.btn.ic1,.btn.ic2,.btn.ic3').css('background','#000');
+        $('.btn.ic1,.btn.ic2,.btn.ic3').addClass('wrongX');
     });
     x++;
-    $('.answer').click (function() {
+   
+ /*   $('.answer').click (function() {
         if (x <= 8) {
             questionRun(x);  
             if((x > 7) && (incorrect >= 4)) {
                 $('.loser').css('display','block');
                 $('.correctQuestion').text('Total Correct Answers: ' + correct);
                 $('.incorrectQuestion').text('Total Incorrect Answers: ' + incorrect);
+                
             }
             else if((x > 7) && (incorrect < 4)) {
                 $('.winner').css('display','block');
@@ -186,9 +198,7 @@ function questionRun(x) {
             } 
 
         }
-        let currentIncr = x;
-        setInterval(function(){ questionRun(currentIncr++); }, 3000);
-    });  
+    }); */ 
 }
     
 

@@ -31,6 +31,10 @@ iframe {
         font-size: 50px;
         letter-spacing: 3px;    
     }
+    button:visited, button:focus, button:target {
+        background: greenyellow;
+        color: green;
+    }
 .questionWrapper {
     margin: 0px auto;
 }
@@ -122,4 +126,25 @@ iframe {
     .btn a {
         color: #FFF;
         box-sizing: border-box;
+    }
+    .wrongX{
+        border: 3px solid #FFF;
+    }
+    .correctY, .correctX {
+        border: 3px solid #FFF;
+    }
+    .wrongX::after {
+        content: ' - INCORRECT!';
+        color: #000;
+        font-style: italic;
+    }
+    .correctY::before {
+        content: 'CORRECT! - ';
+        color: #FFF;
+        font-style: italic;
+    }
+    .correctX::before {
+        content: 'WELL DONE; CORRECT! - ';
+        color: #FFF;
+        font-style: italic;
     }
