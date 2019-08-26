@@ -128,10 +128,10 @@ iframe {
         box-sizing: border-box;
     }
     .wrongX{
-        border: 3px solid #FFF;
+        display: none;
     }
     .correctY, .correctX {
-        border: 3px solid #FFF;
+        border: 3px solid green;
     }
     .wrongX::after {
         content: ' - INCORRECT!';
@@ -139,12 +139,12 @@ iframe {
         font-style: italic;
     }
     .correctY::before {
-        content: 'CORRECT! - ';
-        color: #FFF;
+        content: ' NO : correct answer > ';
+        color: rgba(255,255,255,0.7);
         font-style: italic;
     }
     .correctX::before {
-        content: 'WELL DONE; CORRECT! - ';
-        color: #FFF;
+        content: 'CORRECT! > ';
+        color: rgba(255,255,255,0.7);
         font-style: italic;
     }
