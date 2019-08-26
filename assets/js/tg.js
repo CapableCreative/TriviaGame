@@ -140,7 +140,7 @@ var ic3s = [
 
 $('.nextBtn').click (function() {
     $('.ca').css('background-color','green');  
-    questionRun(incr++); 
+    questionRun(incr++);
     setInterval(function(){ questionRun(incr++); }, 5000);
 });
 
