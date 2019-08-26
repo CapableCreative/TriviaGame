@@ -146,6 +146,7 @@ var ic3s = [
 $('.nextBtn').click (function() {
     $('.ca').css('background-color','green');  
     questionRun(incr++); 
+
    // $('.answer').click (function() {
    //     incr++
    //     questionRun(incr);
@@ -160,6 +161,9 @@ function questionRun(x) {
         $('.question').append('<button class=\"ic1' + x + ' btn ic1 answer btn-primary\">');
         $('.question').append('<button class=\"ic2' + x + ' btn ic2 answer btn-primary\">');
         $('.question').append('<button class=\"ic3' + x + ' btn ic3 answer btn-primary\">');
+
+        shuffle();
+
         $('.instructText').css('display','none');
         $('.nextBtn').css('display','none');
         $('.ca'+ x).text(correctAnswers[x]);
@@ -172,7 +176,6 @@ function questionRun(x) {
         $('.btn.ca').addClass('correctX');      
         $('.btn.ic1,.btn.ic2,.btn.ic3').css('background','#000');
         $('.btn.ic1,.btn.ic2,.btn.ic3').addClass('wrongX');      
-
         });
         $('.ic1,.ic2,.ic3').click (function() {
             incorrect++;
@@ -183,6 +186,7 @@ function questionRun(x) {
         });
         x++;
     }
+
     if (x > 8) {
         if(incorrect >= 4) {
             $('.loser').css('display','block');
@@ -196,6 +200,12 @@ function questionRun(x) {
             $('.incorrectQuestion').text('Total Incorrect Answers: ' + incorrect);
         } 
 
+    }
+        function shuffle() {
+            var quest = document.querySelector('quest');
+            for (var i = quest.children.length; i >= 0; i--) {
+            quest.appendChild(quest.children[Math.random() * i | 0]);
+        }
     }
    
  /*   $('.answer').click (function() {
